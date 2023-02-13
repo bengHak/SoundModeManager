@@ -155,9 +155,7 @@ public class SoundModeManager: NSObject {
     ///   - soundUpdatingInterval: Frequency of checking the status in seconds. Should be greater than `1`. Default is `1`.
     ///   - notificationCenter: Notification center dependency to use for observation. Default is `.default`.
     public convenience init(soundUpdatingInterval: TimeInterval = 1, notificationCenter: NotificationCenter = .default) {
-//        guard let soundUrl = Bundle(for: SoundModeManager.self).url(forResource: "silent", withExtension: "aiff") else {
-        guard let soundUrlPath = Bundle.module.path(forResource: "silent", ofType: "aiff"),
-              let soundUrl = URL(string: soundUrlPath) else {
+        guard let soundUrl = Bundle(for: SoundModeManager.self).url(forResource: "silent", withExtension: "aiff") else {
             fatalError("\(#function) - \(SoundModeManager.self) couldn't find default silent sound `silent.aiff` in resources")
         }
         
